@@ -18,6 +18,7 @@ android {
         debug {
             applicationIdSuffix ".debug"
             debuggable true
+            testCoverageEnabled false
         }
 
         /**
@@ -29,6 +30,23 @@ android {
             initWith debug
             applicationIdSuffix ".debugStaging"
         }
+//        sourceSets{
+//            // Encapsulates configurations for the debug source set.
+//            debug{
+//                // Changes the directory for Java sources.
+//
+////                java.srcDirs = ['debug/java']
+//
+//                // If you list multiple directories, Gradle uses all of them to collect
+//                // sources. Because Gradle gives these directories equal priority, if
+//                // you define the same resource in more than one directory, you get an
+//                // error when merging resources.
+//
+////                res.srcDirs = ['debug/res1']
+//
+////                manifest.srcFile 'main/AndroidManifest.xml'
+//            }
+//        }
     }
 }
 

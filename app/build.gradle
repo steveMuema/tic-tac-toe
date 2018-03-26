@@ -27,7 +27,6 @@ android {
          */
         staging {
             initWith debug
-            manifestPlaceholders = [hostName:"internal.example.com"]
             applicationIdSuffix ".debugStaging"
         }
     }

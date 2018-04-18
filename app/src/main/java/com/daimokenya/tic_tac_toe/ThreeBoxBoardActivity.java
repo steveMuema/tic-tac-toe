@@ -1,11 +1,14 @@
 package com.daimokenya.tic_tac_toe;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -24,6 +27,32 @@ public class ThreeBoxBoardActivity extends AppCompatActivity {
         GridView threeBoxGrid = findViewById(R.id.play_board_grid);
         ThreeBoxAdapter boxAdapter = new ThreeBoxAdapter(this,user,altPlayer);
         threeBoxGrid.setAdapter(boxAdapter);
+    }
+
+    /**
+     * This method takes
+     * @param view reset board text view
+     *        creates a dialog
+     *             and restarts the activity
+     */
+    public void resetBoard(View view){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getApplicationContext());
+
+        final TextView text_reset = new TextView(getApplicationContext());
+        text_reset.setText("Do you want to lose all unsaved game data?");
+        // set prompts.xml to alertdialog builder
+        alertDialogBuilder.setView(text_reset);
+
+        // set dialog message
+        alertDialogBuilder.setCancelable(true).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Intent fiveBoardIntent = new Intent(getApplicationContext(), ThreeBoxBoardActivity.class);
+                fiveBoardIntent.putExtra("EXTRA_USER_PLAYER", user);
+                fiveBoardIntent.putExtra("EXTRA_ALT_PLAYER", altPlayer);
+                startActivity(fiveBoardIntent);
+            }
+        });
+
     }
     /**
      * The following method takes

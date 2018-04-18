@@ -65,13 +65,13 @@ public class ThreeBoxAdapter extends BaseAdapter {
             playBoard[position] = game.getUserPlayer();
             setCellBackground(view);
             if(hasWon(position)){
-                numberOfWins++;
+                numberOfWins += 1;
                 Toast toastWon = Toast.makeText(context, "You have won "+numberOfWins+".", Toast.LENGTH_SHORT);
                 toastWon.show();
                 showScoreBoard();
             }
             if(hasLost(position)){
-                numberOfLost++;
+                numberOfLost += 1;
                 Toast toastLost = Toast.makeText(context, "You have lost "+numberOfLost+".", Toast.LENGTH_SHORT);
                 toastLost.show();
                 showScoreBoard();

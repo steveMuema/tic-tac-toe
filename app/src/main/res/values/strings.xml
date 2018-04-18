@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Tic-tac-toe</string>
+    <string name="msg_set_player_x">You are player X</string>
+    <string name="msg_set_player_o">You are player O</string>
+    <string name="msg_set_three_box">Play on Three box board</string>
+    <string name="msg_set_five_box">Play on Five box board</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main2">Main2Activity</string>
 </resources>
+

@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     /**
-     *This method is invoked when the user clicks on the 'Play' button and send the user to GamePlayActivity
+     *This method is invoked when the user clicks on the 'Play' button and send the user to ThreeBoxBoardActivity
      * @param view is used to be attached on the button that invokes the method onClick
      * The method first validates whether the user and alternate player data type was initialized,
      * then sends the data to the GamePlayActivity before opening it.
@@ -93,11 +93,10 @@ public class MainActivity extends AppCompatActivity {
             toastError.show();
         }
     else {
-        Intent intent = new Intent(this, GamePlayActivity.class);
+        Intent intent = new Intent(this, ThreeBoxBoardActivity.class);
         intent.putExtra("EXTRA_USER_PLAYER", checkUser);
         intent.putExtra("EXTRA_ALT_PLAYER", checkAlt);
         startActivity(intent);
-        finish();
     }
     }
 }

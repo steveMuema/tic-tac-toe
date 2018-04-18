@@ -1,5 +1,9 @@
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <stroke
-        android:width="2dp"
-        android:color="#2D9CDB" />
-</shape>
+<RelativeLayout android:id="@+id/rel_box_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</RelativeLayout>

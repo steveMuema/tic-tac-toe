@@ -2,27 +2,26 @@ package com.daimokenya.tic_tac_toe;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.Toast;
 
 
-public class Main2Activity extends AppCompatActivity {
-    //The following variables would show the scores of the game played by the user
-
+public class ThreeBoxBoardActivity extends AppCompatActivity {
+    String user, altPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
-        String user = getIntent().getStringExtra("EXTRA_USER_PLAYER");
-        String altPlayer = getIntent().getStringExtra("EXTRA_ALT_PLAYER");
-        GridView threeBoxGrid = findViewById(R.id.play_board_grid);
+        setContentView(R.layout.activity_play_board);
+        //The following variables would show the scores of the game played by the user
+        user = getIntent().getStringExtra("EXTRA_USER_PLAYER");
+        altPlayer = getIntent().getStringExtra("EXTRA_ALT_PLAYER");
 
+        //Initialize the playboard grid and populate it
+        GridView threeBoxGrid = findViewById(R.id.play_board_grid);
         ThreeBoxAdapter boxAdapter = new ThreeBoxAdapter(this,user,altPlayer);
         threeBoxGrid.setAdapter(boxAdapter);
     }
@@ -35,10 +34,31 @@ public class Main2Activity extends AppCompatActivity {
      * class to create play board.
      */
     public void playFiveBoxBoard(View view) {
-        Intent fiveBoardIntent = new Intent(this, MainActivity.class);
-//        fiveBoardIntent.putExtra("EXTRA_USER_PLAYER", user);
-//        fiveBoardIntent.putExtra("EXTRA_ALT_PLAYER", altPlayer);
+        Intent fiveBoardIntent = new Intent(this, FiveBoxBoardActivity.class);
+        fiveBoardIntent.putExtra("EXTRA_USER_PLAYER", user);
+        fiveBoardIntent.putExtra("EXTRA_ALT_PLAYER", altPlayer);
         startActivity(fiveBoardIntent);
+    }
+
+    boolean doubleBackToExitPressedOnce = false;
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
     }
 
 }
